@@ -21,8 +21,9 @@ var matrixReshape = function(mat, r, c) {
                 arr[row_count] = []
             }
             arr[row_count][col_count] = mat[i][j];
-            // move the row
+            
             col_count++
+            // move the row
             if(col_count === c) {
                 col_count = 0;
                 row_count += 1;
