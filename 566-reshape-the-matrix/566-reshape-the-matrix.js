@@ -17,6 +17,7 @@ var matrixReshape = function(mat, r, c) {
     
     for(let i = 0; i < row; i++) {
         for (let j = 0; j < col; j++) {
+            //check if undefined then set it to empty array
             if (arr[row_count] === undefined) {
                 arr[row_count] = []
             }
