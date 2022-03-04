@@ -5,6 +5,7 @@
  */
 var isAnagram = function(s, t) {
     const map = {};
+    if(s.length !== t.length) return false;
     for (let i of s) {
         map[i] = map[i] + 1 || 1;
     }
@@ -14,9 +15,6 @@ var isAnagram = function(s, t) {
         map[x] -= 1;
     }
     
-    for (let y in map) {
-        if(map[y] > 0) return false;
-    }
     return true
     
 };
