@@ -16,24 +16,20 @@ function ListNode(val, next) {
 var reverseList = function(head) {
     // iterate through the head first
     // create a variable newNode
-    const array = []
+    
+    // hav a curr that = temp
+    // let temp to be tep.next
+    // let curr.next = null
+    // let cur.next = newNode.next
+    // newNode.next = curr.next
     let newNode = new ListNode(-1);
     let temp = head;
     while(temp){
-        array.push(temp.val);
+        const curr = temp;
         temp = temp.next
-    }
-    
-    for (let i = array.length - 1; i >=0; i--) {
-        if(!newNode) {
-            newNode = new ListNode(array[i]);
-            continue;
-        }
-        let temp2 = newNode;
-        while(temp2.next){
-            temp2 = temp2.next
-        }
-        temp2.next =  new ListNode(array[i])
+        curr.next = null;
+        curr.next = newNode.next;
+        newNode.next = curr;
     }
     
     return newNode.next
