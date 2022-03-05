@@ -28,7 +28,6 @@ var deleteDuplicates = function(head) {
         }else{
             set.add(temp.val);
             prev = temp;
-            
         }
         temp = temp.next;
         
