@@ -22,16 +22,16 @@ var reverseList = function(head) {
     // let curr.next = null
     // let cur.next = newNode.next
     // newNode.next = curr.next
+    
     let newNode = new ListNode(-1);
     let temp = head;
     while(temp){
-        const curr = temp;
+        const temp_curr = temp;
         temp = temp.next
-        curr.next = null;
-        curr.next = newNode.next;
-        newNode.next = curr;
+        temp_curr.next = null;
+        temp_curr.next = newNode.next;
+        newNode.next = temp_curr;
     }
-    
     return newNode.next
     
 };
