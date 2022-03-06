@@ -12,7 +12,6 @@
  */
 var maxDepth = function(root) {
     
-    const arr = [root];
     let size = 0;
     
     const traverse = (node, num) => {
