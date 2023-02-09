@@ -1,6 +1,21 @@
 function sortedSquares(nums: number[]): number[] {
-    const sqrt_num = nums.map(num => num * num)
+    let first = 0
+    let last = nums.length - 1
     
-    return sqrt_num.sort((a, b) => a- b)
+    const newArr = new Array(nums.length)
+    
+    for (let i = nums.length - 1; i >= 0; i--) {
+        if (Math.abs(nums[first]) > Math.abs(nums[last])) {
+            newArr[i] = nums[first] * nums[first]
+            first += 1
+        } else {
+            newArr[i] = nums[last] * nums[last]
+            last -= 1
+        }
+    }
+    
+    
+    
+    return newArr
 
 };
