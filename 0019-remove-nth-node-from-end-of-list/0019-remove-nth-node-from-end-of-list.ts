@@ -11,22 +11,10 @@
  */
 
 function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-    let curr = head;
-    const cache = []
-    
-    while(curr != null) {
-        cache.push(curr)
-        curr = curr.next;
-    }
-    const index = (cache.length - n) - 1;
-    if (cache.length === 1) {
-        head = null
-    } else if (n === 1) {
-        cache[index].next = null
-    } else if (cache.length === n) {
-        head = head.next;
-    } else {
-        cache[index].next = cache[index].next.next
-    }
-    return head;
+    let fast = head, slow = head
+    for (let i = 0; i < n; i++) fast = fast.next
+    if (!fast) return head.next
+    while (fast.next) fast = fast.next, slow = slow.next
+    slow.next = slow.next.next
+    return head
 };
