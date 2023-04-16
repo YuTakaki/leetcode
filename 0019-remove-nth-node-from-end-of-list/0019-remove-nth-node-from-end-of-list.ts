@@ -18,13 +18,12 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
         cache.push(curr)
         curr = curr.next;
     }
-    
-    const index = cache.length - n - 1;
+    const index = (cache.length - n) - 1;
     if (cache.length === 1) {
         head = null
     } else if (n === 1) {
         cache[index].next = null
-    } else if (index < 0) {
+    } else if (cache.length === n) {
         head = head.next;
     } else {
         cache[index].next = cache[index + 1].next
