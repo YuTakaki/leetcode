@@ -26,7 +26,7 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
     } else if (cache.length === n) {
         head = head.next;
     } else {
-        cache[index].next = cache[index + 1].next
+        cache[index].next = cache[index].next.next
     }
     return head;
 };
