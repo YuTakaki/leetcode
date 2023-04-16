@@ -10,29 +10,23 @@
  * }
  */
 
-const getDepth = (node: ListNode | null, depth = 1): number => {
-  if (!node) return depth;
-  return getDepth(node.next, depth + 1);
-};
-
 function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-  const target = getDepth(head) - n;
-
-  if (target === 1) return head?.next ?? null;
-
-  let node = head;
-  let prev = new ListNode(0, head);
-  let count = 1;
-
-  while (count !== target) {
-    prev = prev.next;
-    node = node.next;
-    count++;
-  }
-
-  const next = node.next;
-  node.next = null;
-  prev.next = next;
-
-  return head;
-}
+    let curr = head;
+    const cache = []
+    
+    while(curr != null) {
+        cache.push(curr)
+        curr = curr.next;
+    }
+    const index = (cache.length - n) - 1;
+    if (cache.length === 1) {
+        head = null
+    } else if (n === 1) {
+        cache[index].next = null
+    } else if (cache.length === n) {
+        head = head.next;
+    } else {
+        cache[index].next = cache[index].next.next
+    }
+    return head;
+};
