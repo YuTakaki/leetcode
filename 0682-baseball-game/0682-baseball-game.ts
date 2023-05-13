@@ -2,14 +2,20 @@ function calPoints(operations: string[]): number {
     const score = []
     
     for (let item of operations) {
-        if (item === "+") {
-            score.push(score[score.length-1] + score[score.length-2])
-        } else if (item === "D") {
-            score.push(score[score.length-1] * 2)
-        } else if (item === "C") {
-            score.pop()
-        } else {
-            score.push(Number(item))
+        
+        switch(item){
+            case "+":
+                score.push(score[score.length - 1] + score[score.length - 2])
+                break
+            case "D":
+                score.push(score[score.length - 1] * 2)
+                break  
+            case "C":
+                score.pop()
+                break
+            default:
+                score.push(Number(item))
+                break  
         }
     }
     console.log(score)
