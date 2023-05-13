@@ -1,8 +1,6 @@
 function calPoints(operations: string[]): number {
     const score = []
-    
-    for (let item of operations) {
-        
+    for (let item of operations) {   
         switch(item){
             case "+":
                 score.push(score[score.length - 1] + score[score.length - 2])
@@ -18,8 +16,6 @@ function calPoints(operations: string[]): number {
                 break  
         }
     }
-    console.log(score)
-    
     
     return score.reduce((prev, curr) => prev + curr,0)
 
