@@ -5,7 +5,6 @@ function countStudents(students: number[], sandwiches: number[]): number {
             count++;
             const num = students.shift()
             students.push(num)
-            console.log(students)
             
         } else {
             students.shift()
