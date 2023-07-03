@@ -55,22 +55,22 @@ class MyLinkedList {
   }
 
   addAtIndex(index: number, val: number): void {
-    let newNode = new Nodes(val)
+    let newNode = new Nodes(val);
     if (index < 0 || index > this.size) return;
-    if (index === 0){
-        this.addAtHead(val)
-    } else if(index == this.size) {
-        this.addAtTail(val)
+    if (index === 0) {
+      this.addAtHead(val);
+    } else if (index == this.size) {
+      this.addAtTail(val);
     } else {
-        let current = this.head
-        let i = 0
-        while(i != index - 1){
-            current = current!.next
-            i++
-        }
-        newNode.next = current!.next
-        current!.next = newNode
-        this.size++
+      let i = 0;
+      let curr = this.head;
+      while (i != index - 1) {
+        curr = curr!.next;
+          i++;
+      }
+      newNode.next = curr!.next;
+      curr!.next = newNode;
+      this.size++
     }
   }
 
@@ -80,24 +80,24 @@ class MyLinkedList {
       this.size--;
     }
 
-    if (!this.head) this.tail=null
+    if (!this.head) this.tail = null;
   }
 
   deleteAtIndex(index: number): void {
-    if(index < 0 || index >= this.size) return;
+    if (index < 0 || index >= this.size) return;
     if (index === 0) {
-        this.head = this.head!.next;
-    } else{
-        let current = this.head;
-        let i = 0;
-        while (i !== index - 1) {
-            current = current!.next;
-            i++;
-        }
-        current!.next = current!.next!.next;
-        if (index === this.size - 1) {
-            this.tail = current;
-        }
+      this.head = this.head!.next;
+    } else {
+      let current = this.head;
+      let i = 0;
+      while (i !== index - 1) {
+        current = current!.next;
+        i++;
+      }
+      current!.next = current!.next!.next;
+      if (index === this.size - 1) {
+        this.tail = current;
+      }
     }
     this.size--;
   }
