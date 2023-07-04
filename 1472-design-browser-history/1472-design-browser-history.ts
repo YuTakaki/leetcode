@@ -14,12 +14,10 @@ class LinkedListNode {
 }
 
 class BrowserHistory {
-  head: LinkedListNode;
   curr: LinkedListNode;
 
   constructor(homepage: string) {
-    this.head = new LinkedListNode(homepage);
-    this.curr = this.head;
+    this.curr = new LinkedListNode(homepage);
   }
 
   visit(url: string): void {
