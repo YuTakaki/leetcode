@@ -10,21 +10,36 @@
  * }
  */
 
-function reverseList(head: ListNode | null): ListNode | null {
-    let curr = head
-    let next = null
-    let prev = null
+// function reverseList(head: ListNode | null): ListNode | null {
+//     let curr = head
+//     let next = null
+//     let prev = null
     
-    while(curr) {
-        next = curr.next
-        curr.next = prev
+//     while(curr) {
+//         next = curr.next
+//         curr.next = prev
         
-        prev = curr
-        curr = next  
-    }
+//         prev = curr
+//         curr = next  
+//     }
+//     return prev
+
+// };
+
+const dfs = (curr: ListNode | null) => {
+    const prev = reverseList(curr.next)
+    curr.next.next = curr
+    curr.next = null
     return prev
+}
+
+function reverseList(head: ListNode | null): ListNode | null {
+    if (!head?.next) return head;
+    return dfs(head)
 
 };
+
+
 
 // function reverseList(head: ListNode | null): ListNode | null {
 //     // push val in the array
