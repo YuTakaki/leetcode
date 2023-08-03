@@ -1,3 +1,6 @@
+/**
+* Insertion sort
+*/
 function sortArray(nums: number[]): number[] {
     for (let x = 1; x < nums.length; x++) {
         for (let y = x; y > 0; y--) {
