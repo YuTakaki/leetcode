@@ -7,7 +7,6 @@ function searchMatrix(matrix: number[][], target: number): boolean {
     
     while(top <= bottom) {
         const pivot = Math.ceil((top + bottom) / 2)
-        console.log(pivot)
         if (target < matrix[pivot][0]) {
             bottom = pivot - 1
         } else if (target > matrix[pivot][matrix[0].length - 1]) {
@@ -15,7 +14,6 @@ function searchMatrix(matrix: number[][], target: number): boolean {
         } else {
             break
         }
-        console.log(top, bottom)
     }
     
     
