@@ -11,7 +11,7 @@ var solution = function(isBadVersion: any) {
         let l = 0;
         let r = n
         while (l <= r) {
-            const pivot = Math.floor((l + r) / 2)
+            const pivot = Math.ceil((l + r) / 2)
             const isbad = isBadVersion(pivot)
             if (isbad) {
                 r = pivot - 1
@@ -19,6 +19,6 @@ var solution = function(isBadVersion: any) {
                 l = pivot + 1
             }
         }
-        return Math.floor((l + r) / 2) + 1
+        return Math.ceil((l + r) / 2)
     };
 };
