@@ -12,15 +12,27 @@
  * }
  */
 
-function traverse(root: TreeNode | null, arr = []): number[] {
-    if (root === null) return []
-    traverse(root.left, arr)
-    arr.push(root.val)
-    traverse(root.right, arr)
-    return arr
-}
 
 function kthSmallest(root: TreeNode | null, k: number): number {
-    const stack = traverse(root)
-    return stack[k-1]
+    const stack = []
+    let n = 0
+    let curr = root
+
+    
+    while(curr || stack.length > 0) {
+        while(curr) {
+            stack.push(curr)
+            curr = curr.left
+        } 
+        curr = stack.pop()
+        
+        n += 1
+        if (n === k) {
+            return curr.val
+        }
+
+        curr = curr.right
+    }
+
 };
+
