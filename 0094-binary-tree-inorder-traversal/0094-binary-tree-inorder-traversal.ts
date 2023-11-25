@@ -12,12 +12,33 @@
  * }
  */
 
-function inorderTraversal(root: TreeNode | null, arr = []): number[] {
-    if (root === null) return []
-    inorderTraversal(root.left, arr)
-    arr.push(root.val)
-    inorderTraversal(root.right, arr)
-    return arr
+// function inorderTraversal(root: TreeNode | null, arr = []): number[] {
+//     if (root === null) return []
+//     inorderTraversal(root.left, arr)
+//     arr.push(root.val)
+//     inorderTraversal(root.right, arr)
+//     return arr
     
     
+// };
+
+
+function inorderTraversal(root: TreeNode | null): number[] {
+    const stack = []
+    const result = []
+    
+    let curr = root
+    
+    while(curr || stack.length > 0) {
+        while (curr) {
+            stack.push(curr)
+            curr = curr.left
+        }
+        
+        curr = stack.pop()
+        result.push(curr.val)
+        curr = curr.right
+    }
+    
+    return result
 };
