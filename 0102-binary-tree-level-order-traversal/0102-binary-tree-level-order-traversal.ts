@@ -21,7 +21,7 @@ function levelOrder(root: TreeNode | null): number[][] {
         
         const queueLen = queue.length
         const level = []
-        
+        // did the for loop to track the nodes level
         for (let i = 0; i < queueLen; i++) {
             const curr = queue.shift()
             level.push(curr.val)
