@@ -4,71 +4,81 @@ class KthLargest {
     constructor(k: number, nums: number[]) {
         this.heap = [0]
         this.k = k
+        
+        // add all the number
         for (let num of nums) {
-            this.heap_add(num)
+            this.heapPush(num)
         }
         
-        while(this.heap.length - 1 > k) {
-            this.heap_pop()
+        while(this.heap.length-1 > k) {
+            this.heapPop()
         }
     
     }
 
     add(val: number): number {
-        this.heap_add(val)
-        
-        while(this.heap.length - 1 >this.k) {
-            this.heap_pop()
+        this.heapPush(val)
+        while(this.heap.length-1 > this.k) {
+            this.heapPop()
         }
         return this.heap[1]
     }
-    
-    heap_add(val) {
+
+    heapPush(val: number) {
         this.heap.push(val)
         
-        let index = this.heap.length - 1
-        // if index is greater than one the current index is less than parent element
-        while (index > 1 && this.heap[index] < this.heap[Math.floor(index / 2)]) {
-            const temp = this.heap[index]
-            this.heap[index] = this.heap[Math.floor(index / 2)]
-            this.heap[Math.floor(index / 2)] = temp
-            index = Math.floor(index / 2)
+        let i = this.heap.length - 1
+        
+        // procanate up
+        // do this until current index is less than parent element
+        while (i > 1 && this.heap[i] < this.heap[Math.floor(i / 2)]) {
+            const temp = this.heap[i]
+            this.heap[i] = this.heap[Math.floor(i / 2)]
+            this.heap[Math.floor(i / 2)] = temp
+            i = Math.floor(i / 2)
         }
     }
 
-    heap_pop() {
-        // heap length == 1 just return
+    heapPop() {
+        // if lenth of heap is 1
         if (this.heap.length === 1) return
-        // heap length == 2 heap.pop
+        // if length of heap is 2
         if (this.heap.length === 2) {
             this.heap.pop()
             return
         }
-        // move the last item up in the ist index of the array
+        
         this.heap[1] = this.heap.pop()
         
+        let i = 1
         
-        let index = 1
-        // check if left child exist
-        while(index * 2 < this.heap.length){
-            //check if right chjild exist and right child is less tha left child and right child is less than parent
-            if (index * 2 + 1 < this.heap.length && this.heap[index * 2 + 1] < this.heap[index * 2] && this.heap[index] > this.heap[index * 2 + 1]) {
-                const temp = this.heap[index]
-                this.heap[index] = this.heap[Math.floor(index * 2 + 1)]
-                this.heap[Math.floor(index * 2 + 1)] = temp
-                index = Math.floor(index * 2 + 1)
-                
-            } else if (this.heap[index] > this.heap[Math.floor(index * 2)]) { //check if left child is less than parent
-                const temp = this.heap[index]
-                this.heap[index] = this.heap[Math.floor(index * 2)]
-                this.heap[Math.floor(index * 2)] = temp
-                index = Math.floor(index * 2)
+        // do this until you have left child
+        while(i *2 < this.heap.length) {
+            // do this condition: 
+            // 1. if you have right child element
+            // 2. if right is less than left
+            // 3. if curr is greater than right
+            if (i * 2 + 1 < this.heap.length &&
+                this.heap[Math.floor(i * 2 + 1)] < this.heap[Math.floor(i * 2)] &&
+                this.heap[i] > this.heap[Math.floor(i * 2 + 1)]
+            ) {
+                const temp = this.heap[i]
+                this.heap[i] = this.heap[Math.floor(i * 2 + 1)]
+                this.heap[Math.floor(i * 2 + 1)] = temp
+                i = Math.floor(i * 2 + 1)
+            } else if (this.heap[i] > this.heap[Math.floor(i * 2)]) {
+                const temp = this.heap[i]
+                this.heap[i] = this.heap[Math.floor(i * 2)]
+                this.heap[Math.floor(i * 2)] = temp
+                i = Math.floor(i * 2)
             } else {
                 break
             }
         }
         
     }
+    
+
 }
 
 /**
