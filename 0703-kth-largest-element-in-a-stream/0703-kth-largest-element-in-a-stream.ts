@@ -52,6 +52,7 @@ class KthLargest {
         
         let i = 1
         
+        // procanate down
         // do this until you have left child
         while(i *2 < this.heap.length) {
             // do this condition: 
