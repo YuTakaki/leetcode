@@ -117,7 +117,6 @@ function kClosest(points: number[][], k: number): number[][] {
   for (let point of points) {
     heap.push([squaredDistance(point), point])
   }
-  console.log(heap.heap)
   const res: [number, number[]][] = []
   for (let i = 0; i < k; i++) {
     res.push(heap.pop() as [number, number[]]) 
